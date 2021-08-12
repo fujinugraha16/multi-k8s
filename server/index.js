@@ -2,9 +2,11 @@ import redis from "redis";
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import { Pool } from "pg";
+import pkg from "pg";
 
-import keys from "./keys";
+import keys from "./keys.js";
+
+const { Pool } = pkg;
 
 // Express App Setup
 const app = express();
