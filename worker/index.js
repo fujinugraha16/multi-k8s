@@ -17,7 +17,6 @@ function fib(index) {
 
 sub.on("message", (channel, message) => {
   redisClient.hset("values", message, fib(+message));
-  console.log("web socket on");
 });
 
-sub.subscribe("insert", (err, reply) => console.log("subscribe", reply));
+sub.subscribe("insert");
