@@ -12,6 +12,19 @@
       "image": "fujinugraha/multi-server",
       "hostname": "api",
       "essesntial": false
+    },
+    {
+      "name": "nginx",
+      "image": "fujinugraha/multi-nginx",
+      "hostname": "nginx",
+      "essesntial": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["client", "server"]
     }
   ]
 }
