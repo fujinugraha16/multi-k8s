@@ -1,0 +1,20 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker image build -t fujinugraha/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker container run fujinugraha/react-test npm run test
+
+after_success:
+  - docker image build -t fujinugraha/multi-client ./client
+  - docker image build -t fujinugraha/multi-nginx ./nginx
+  - docker image build -t fujinugraha/multi-server ./server
+  # Log in to docker cli
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push fujinugraha/multi-client
+  - docker push fujinugraha/multi-nginx
+  - docker push fujinugraha/multi-server
