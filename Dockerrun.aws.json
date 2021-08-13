@@ -10,7 +10,7 @@
     {
       "name": "server",
       "image": "fujinugraha/multi-server",
-      "hostname": "server",
+      "hostname": "api",
       "essesntial": false
     }
   ]
