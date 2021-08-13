@@ -67,4 +67,20 @@ app.post("/values", async (req, res) => {
   res.send({ working: true });
 });
 
+// Worker setup
+const sub = redisClient.duplicate();
+
+function fib(index) {
+  if (index < 2) return 1;
+
+  return fib(index - 1) + fib(index - 2);
+}
+
+sub.on("message", (channel, message) => {
+  redisClient.hset("values", message, fib(+message));
+});
+
+sub.subscribe("insert");
+
+// App Listening
 app.listen(5000, () => console.log("server listening ..."));

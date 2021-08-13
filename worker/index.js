@@ -9,14 +9,15 @@ const redisClient = redis.createClient({
 
 const sub = redisClient.duplicate();
 
-const fib = (index) => {
+function fib(index) {
   if (index < 2) return 1;
 
   return fib(index - 1) + fib(index - 2);
-};
+}
 
 sub.on("message", (channel, message) => {
   redisClient.hset("values", message, fib(+message));
+  console.log("web socket on");
 });
 
-sub.subscribe("insert");
+sub.subscribe("insert", (err, reply) => console.log("subscribe", reply));
