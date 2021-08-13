@@ -14,6 +14,12 @@
       "essesntial": false
     },
     {
+      "name": "worker",
+      "image": "fujinugraha/multi-worker",
+      "hostname": "api",
+      "essesntial": false
+    },
+    {
       "name": "nginx",
       "image": "fujinugraha/multi-nginx",
       "hostname": "nginx",
