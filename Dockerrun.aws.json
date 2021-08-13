@@ -4,7 +4,14 @@
     {
       "name": "client",
       "image": "fujinugraha/multi-client",
-      "hostname": "client"
+      "hostname": "client",
+      "essesntial": false
+    },
+    {
+      "name": "server",
+      "image": "fujinugraha/multi-server",
+      "hostname": "server",
+      "essesntial": false
     }
   ]
 }
