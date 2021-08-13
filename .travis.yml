@@ -14,7 +14,7 @@ after_success:
   - docker image build -t fujinugraha/multi-server ./server
   # Log in to docker cli
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  # Take those images and push them to docker hub
+  # Take those images and push them to docker hub.
   - docker push fujinugraha/multi-client
   - docker push fujinugraha/multi-nginx
   - docker push fujinugraha/multi-server
