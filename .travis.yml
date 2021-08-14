@@ -20,3 +20,12 @@ after_success:
   - docker push fujinugraha/multi-nginx
   - docker push fujinugraha/multi-server
   - docker push fujinugraha/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
+  region: "ap-southeast-1"
+  app: "multi-docker"
+  env: "Multidocker-env"
+  bucket_name: "elasticbeanstalk-ap-southeast-1-876557561682"
