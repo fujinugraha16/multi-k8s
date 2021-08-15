@@ -8,11 +8,12 @@ spec:
     matchLabels:
       component: web
   template:
-    metada:
+    metadata:
       labels:
         component: web
     spec:
-      - name: client
-        image: fujinugraha/multi-client
-        ports:
-          - containerPort: 3000
+      containers:
+        - name: client
+          image: fujinugraha/multi-client
+          ports:
+            - containerPort: 3000
